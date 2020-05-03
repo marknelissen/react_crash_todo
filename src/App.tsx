@@ -1,28 +1,22 @@
-import React, { useState } from 'react';
+import React, { useCallback, useReducer } from 'react';
 import './App.css';
 import Todos from './components/Todos';
+import { toggleCompleted } from './reducers/todos/actions';
+import { todosInitialState, todosReducer } from './reducers/todos/reducer';
 
 export default () => {
-  const [todos] = useState([
-    {
-      id: 1,
-      title: 'Take out the trash',
-      completed: false,
+  const [todos, dispatch] = useReducer(todosReducer, todosInitialState);
+
+  const handleCompletedChanged = useCallback(
+    (id: number) => {
+      dispatch(toggleCompleted(id))
     },
-    {
-      id: 2,
-      title: 'Do the laundry',
-      completed: false,
-    },
-    {
-      id: 3,
-      title: 'Go shopping',
-      completed: false,
-    },
-  ])
+    [],
+  )
+
   return (
     <div className="App">
-      <Todos todos={todos} />
+      <Todos todos={todos} onCompleteChanged={handleCompletedChanged} />
     </div>
   );
 }
