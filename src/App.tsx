@@ -31,12 +31,10 @@ export default () => {
   );
 
   return (
-    <div className="App">
-      <div className="container">
-        <Header />
-        <AddTodo onAdd={handleAdd} />
-        <Todos todos={todos} onCompleteChanged={handleCompletedChanged} onDelete={handleDelete} />
-      </div>
+    <div className="container">
+      <Header />
+      <AddTodo onAdd={handleAdd} />
+      <Todos todos={todos} onCompleteChanged={handleCompletedChanged} onDelete={handleDelete} />
     </div>
   );
 }
