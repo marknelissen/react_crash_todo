@@ -1,7 +1,7 @@
-import { bool, number, shape, string } from 'prop-types';
+import { bool, shape, string } from 'prop-types';
 
 export default shape({
-    id: number.isRequired,
+    id: string.isRequired,
     title: string.isRequired,
     completed: bool.isRequired,
 });

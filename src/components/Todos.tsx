@@ -20,6 +20,6 @@ Todos.propTypes = {
 }
 
 interface TodosProps extends InferProps<typeof Todos.propTypes> {
-    onCompleteChanged?: (id: number) => unknown,
-    onDelete?: (id: number) => unknown,
+    onCompleteChanged?: (id: string) => unknown,
+    onDelete?: (id: string) => unknown,
 }

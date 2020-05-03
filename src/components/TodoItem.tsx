@@ -52,6 +52,6 @@ TodoItem.propTypes = {
 }
 
 interface TodoItemProps extends InferProps<typeof TodoItem.propTypes> {
-    onCompleteChanged?: (id: number) => unknown,
-    onDelete?: (id: number) => unknown,
+    onCompleteChanged?: (id: string) => unknown,
+    onDelete?: (id: string) => unknown,
 }
