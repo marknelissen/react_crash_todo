@@ -26,4 +26,5 @@ export const todosInitialState: Todo[] = [
 ];
 
 export const todosReducer = createReducer<Todo[], ActionType<typeof actions>>(todosInitialState)
+    .handleType(actions.DELETE, (state, action) => state.filter(todo => todo.id !== action.payload))
     .handleType(actions.TOGGLE_COMPLETED, (state, action) => state.map(todo => todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo))

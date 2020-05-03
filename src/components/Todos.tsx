@@ -3,11 +3,11 @@ import React from 'react';
 import Todo from '../proptypes/Todo';
 import TodoItem from './TodoItem';
 
-export default function Todos({ onCompleteChanged, todos }: TodosProps) {
+export default function Todos({ onCompleteChanged, onDelete, todos }: TodosProps) {
     return (
         <>
             {todos.map(todo => (
-                <TodoItem key={todo.id} todo={todo} onCompleteChanged={onCompleteChanged} />
+                <TodoItem key={todo.id} todo={todo} onCompleteChanged={onCompleteChanged} onDelete={onDelete} />
             ))}
         </>
     );
@@ -15,9 +15,11 @@ export default function Todos({ onCompleteChanged, todos }: TodosProps) {
 
 Todos.propTypes = {
     onCompleteChanged: func,
+    onDelete: func,
     todos: arrayOf(Todo.isRequired).isRequired,
 }
 
 interface TodosProps extends InferProps<typeof Todos.propTypes> {
     onCompleteChanged?: (id: number) => unknown,
+    onDelete?: (id: number) => unknown,
 }
