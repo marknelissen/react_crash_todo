@@ -5,6 +5,8 @@ import Header from './components/Header';
 import Todos from './components/Todos';
 import { addTodo, deleteTodo, toggleCompleted } from './reducers/todos/actions';
 import { todosInitialState, todosReducer } from './reducers/todos/reducer';
+import { BrowserRouter, Route } from 'react-router-dom';
+import About from './components/About';
 
 export default () => {
   const [todos, dispatch] = useReducer(todosReducer, todosInitialState);
@@ -30,11 +32,23 @@ export default () => {
     [],
   );
 
+  const renderRoot = useCallback(
+    () => (
+      <>
+        <AddTodo onAdd={handleAdd} />
+        <Todos todos={todos} onCompleteChanged={handleCompletedChanged} onDelete={handleDelete} />
+      </>
+    ),
+    [handleAdd, handleCompletedChanged, handleDelete, todos]
+  )
+
   return (
-    <div className="container">
-      <Header />
-      <AddTodo onAdd={handleAdd} />
-      <Todos todos={todos} onCompleteChanged={handleCompletedChanged} onDelete={handleDelete} />
-    </div>
+    <BrowserRouter>
+      <div className="container">
+        <Header />
+        <Route exact path="/" render={renderRoot} />
+        <Route path="/about" component={About} />
+      </div>
+    </BrowserRouter>
   );
 }
