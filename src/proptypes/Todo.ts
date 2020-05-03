@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types'
+import { bool, number, shape, string } from 'prop-types';
 
-export default PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    completed: PropTypes.bool.isRequired,
+export default shape({
+    id: number.isRequired,
+    title: string.isRequired,
+    completed: bool.isRequired,
 });

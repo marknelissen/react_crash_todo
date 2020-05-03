@@ -1,4 +1,4 @@
-import PropTypes, { InferProps } from 'prop-types';
+import { arrayOf, InferProps } from 'prop-types';
 import React from 'react';
 import Todo from '../proptypes/Todo';
 import TodoItem from './TodoItem';
@@ -14,5 +14,5 @@ export default function Todos({ todos }: InferProps<typeof Todos.propTypes>) {
 }
 
 Todos.propTypes = {
-    todos: PropTypes.arrayOf(Todo.isRequired).isRequired,
+    todos: arrayOf(Todo.isRequired).isRequired,
 };
