@@ -20,7 +20,7 @@ export default function TodoItem({ onCompleteChanged, onDelete, todo }: TodoItem
         textDecoration: todo.completed ? 'line-through' : 'none',
     }), [todo.completed]);
 
-    const handleCheckboxClick = useCallback(
+    const handleCheckboxChange = useCallback(
         () => {
             onCompleteChanged?.(todo.id);
         },
@@ -37,7 +37,7 @@ export default function TodoItem({ onCompleteChanged, onDelete, todo }: TodoItem
     return (
         <div style={style}>
             <p>
-                <input type="checkbox" onClick={handleCheckboxClick} /> {' '}
+                <input type="checkbox" onChange={handleCheckboxChange} checked={todo.completed} /> {' '}
                 {todo.title}
                 <button style={btnStyle} onClick={handleDeleteClick}>X</button>
             </p>
